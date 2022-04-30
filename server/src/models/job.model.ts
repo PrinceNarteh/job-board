@@ -20,3 +20,4 @@ const jobSchema: Schema<IJobDocument> = new Schema({
 });
 
 const Job = model<IJobDocument, IJobModel>("Job", jobSchema);
+export default Job;

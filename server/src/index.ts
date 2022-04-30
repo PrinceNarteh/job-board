@@ -7,6 +7,7 @@ import cors from "cors";
 import {expressJwt} from "./utils/expressJwt";
 import {logger} from "./utils/logger";
 import resolvers from "./graphql/resolvers";
+import {dbConnect} from "./utils/dbConnect";
 
 const PORT = process.env.PORT || 4000;
 
@@ -18,10 +19,15 @@ const typeDefs = gql(
 );
 
 const start = async () => {
+  // database connection
+  await dbConnect();
+
+  // setting up ApolloServer
   const apolloServer = new ApolloServer({typeDefs, resolvers});
   await apolloServer.start();
   apolloServer.applyMiddleware({app, path: "/graphql"});
 
+  // listening to PORT
   app.listen(PORT, () => {
     logger.info(`Server running on http://localhost:${PORT}`);
   });

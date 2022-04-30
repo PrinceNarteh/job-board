@@ -1,5 +1,10 @@
+import Job from "../models/job.model";
+
 export default {
   Query: {
-    greeting: () => "Hello, World!",
+    jobs: async () => {
+      const jobs = await Job.find({});
+      return jobs;
+    },
   },
 };
