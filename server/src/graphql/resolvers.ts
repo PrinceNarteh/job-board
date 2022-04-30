@@ -1,4 +1,4 @@
-import Job from "../models/job.model";
+import Job, {IJobDocument} from "../models/job.model";
 
 export default {
   Query: {
@@ -6,5 +6,8 @@ export default {
       const jobs = await Job.find({});
       return jobs;
     },
+  },
+  Job: {
+    company: (job: IJobDocument) => Job.findById(job.company),
   },
 };

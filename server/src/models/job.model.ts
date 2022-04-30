@@ -1,11 +1,13 @@
 import {Schema, Model, Document, model} from "mongoose";
+import {ICompanyDocument} from "./company.model";
 
 interface IJob {
   title: string;
   description: string;
+  company: ICompanyDocument;
 }
 
-interface IJobDocument extends IJob, Document {}
+export interface IJobDocument extends IJob, Document {}
 interface IJobModel extends Model<IJobDocument> {}
 
 const jobSchema: Schema<IJobDocument> = new Schema({
@@ -15,6 +17,10 @@ const jobSchema: Schema<IJobDocument> = new Schema({
   },
   description: {
     type: String,
+    required: true,
+  },
+  company: {
+    type: Schema.Types.ObjectId,
     required: true,
   },
 });

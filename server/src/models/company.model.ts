@@ -5,7 +5,7 @@ interface ICompany {
   description: string;
 }
 
-interface ICompanyDocument extends ICompany, Document {}
+export interface ICompanyDocument extends ICompany, Document {}
 interface ICompanyModel extends Model<ICompanyDocument> {}
 
 const companySchema: Schema<ICompanyDocument> = new Schema({
