@@ -1,16 +1,11 @@
-type Query {
-  jobs: [Job!]
-  job: Job!
+input CompanyInput {
+  name: String!
+  description: String!
 }
 
-input JobInput {
-  title: String
+input updateCompanyInput {
+  name: String
   description: String
-  company: String
-}
-
-type Mutation {
-  createJob(jobInput: JobInput): Job!
 }
 
 type Company {
@@ -19,9 +14,35 @@ type Company {
   description: String!
 }
 
+input JobInput {
+  title: String
+  description: String
+  company: String
+}
+
 type Job {
   id: ID!
   title: String!
-  company: Company!
   description: String!
+  company: Company!
+}
+
+type Query {
+  # Job
+  jobs: [Job!]
+  job: Job!
+
+  # Company
+  companies: [Company!]
+  company: Company!
+}
+
+type Mutation {
+  # Job
+  createJob(jobInput: JobInput): Job!
+
+  # Company
+  createCompany(companyInput: CompanyInput): Company!
+  updateCompany(companyId: ID!, companyInput: updateCompanyInput): Company!
+  deleteCompany(companyId: ID!): String!
 }

@@ -4,7 +4,7 @@ import Company, {
   ICompanyDocument,
 } from "../../../models/company.model";
 
-const findCompany = async (companyId: string) => {
+const findCompany = async (companyId: String) => {
   let company = await Company.findById(companyId);
   if (!company) {
     throw new ApolloError(`Company with ID ${companyId} not found`);
@@ -17,18 +17,22 @@ interface ICompanyInput extends ICompany {
 }
 
 const companyMutations = {
-  createCompany: async (_parent: ICompanyDocument, companyInput: ICompany) => {
+  createCompany: async (
+    _parent: ICompanyDocument,
+    {companyInput}: {companyInput: ICompany}
+  ) => {
     const company = await Company.create(companyInput);
     return company;
   },
   updateCompany: async (
     _parent: ICompanyDocument,
-    companyInput: ICompanyInput
+    {companyId, companyInput}: {companyId: String; companyInput: ICompanyInput}
   ) => {
-    const {id} = companyInput;
-    let company = await findCompany(id);
+    await findCompany(companyId);
 
-    company = await company.update(companyInput, {new: true});
+    let company = await Company.findByIdAndUpdate(companyId, companyInput, {
+      new: true,
+    });
     return company;
   },
   deleteCompany: async (
