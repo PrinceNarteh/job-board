@@ -1,6 +1,6 @@
 import {Schema, model, Document, Model} from "mongoose";
 
-interface ICompany {
+export interface ICompany {
   name: string;
   description: string;
 }
