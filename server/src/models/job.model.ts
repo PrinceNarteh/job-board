@@ -1,7 +1,7 @@
 import {Schema, Model, Document, model} from "mongoose";
 import {ICompanyDocument} from "./company.model";
 
-interface IJob {
+export interface IJob {
   title: string;
   description: string;
   company: ICompanyDocument;
