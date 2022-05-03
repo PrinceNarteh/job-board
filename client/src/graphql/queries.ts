@@ -6,6 +6,9 @@ export const GET_JOBS = gql`
       id
       title
       description
+      company {
+        name
+      }
     }
   }
 `;

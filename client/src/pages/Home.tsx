@@ -32,7 +32,7 @@ const Home = () => {
           <li
             key={idx}
             className="text-xl font-medium text-gray-700 border-b border-gray-300 py-5 pl-2 hover:bg-slate-100 last:border-b-0 cursor-pointer">
-            {job.title}
+            {job.title} at {job.company.name}
           </li>
         ))}
       </ul>
