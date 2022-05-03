@@ -8,7 +8,7 @@ import {
 const authLink = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
-      authorization: "Bearer ey123",
+      // authorization: "Bearer ey123",
     },
   });
   return forward(operation);

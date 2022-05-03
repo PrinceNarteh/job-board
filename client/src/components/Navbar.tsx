@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -9,14 +10,18 @@ const Navbar = () => {
         </h3>
         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
           <li>
-            <a href="#" className="text-gray-500 hover:text-gray-700 text-lg">
-              About
-            </a>
+            <NavLink
+              to="/"
+              className="text-gray-500 hover:text-gray-700 text-lg">
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="text-gray-500 hover:text-gray-700 text-lg">
+            <NavLink
+              to="/post-job"
+              className="text-gray-500 hover:text-gray-700 text-lg">
               Post Job
-            </a>
+            </NavLink>
           </li>
           <li>
             <a href="#" className="text-gray-500 hover:text-gray-700 text-lg">
