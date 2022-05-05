@@ -1,5 +1,6 @@
 import {useQuery} from "@apollo/client";
 import React from "react";
+import {Link} from "react-router-dom";
 import {GET_JOBS} from "../graphql/queries";
 
 const Home = () => {
@@ -32,7 +33,9 @@ const Home = () => {
           <li
             key={idx}
             className="text-xl font-medium text-gray-700 border-b border-gray-300 py-5 pl-2 hover:bg-slate-100 last:border-b-0 cursor-pointer">
-            {job.title} at {job.company.name}
+            <Link to={`/${job.id}`}>
+              {job.title} at {job.company.name}
+            </Link>
           </li>
         ))}
       </ul>

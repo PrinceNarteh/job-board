@@ -7,6 +7,7 @@ const jobQueries = {
     return jobs;
   },
   job: async (_: IJobDocument, {jobId}: {jobId: string}) => {
+    console.log(jobId);
     const job = await Job.findById(jobId);
     return job;
   },

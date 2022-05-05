@@ -12,7 +12,7 @@ import {dbConnect} from "./utils/dbConnect";
 const PORT = process.env.PORT || 4000;
 
 const app = express();
-app.use(cors(), express.json(), expressJwt);
+app.use(cors(), express.json());
 
 const typeDefs = gql(
   fs.readFileSync(path.join(__dirname, "graphql", "schema.graphql"), "utf-8")
